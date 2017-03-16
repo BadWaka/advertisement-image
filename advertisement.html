@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>advertisement</title>
+    <link href="css/advertisement.css" rel="stylesheet">
+</head>
+<body>
+<section class="content">
+    <div class="btn-skip">跳过<span class="countDown"></span>s</div>
+</section>
+<script src="js/advertisement.js"></script>
+<script>
+    var content = document.querySelector('.content');
+
+    advertisement.init(content, 3, function () {
+        console.log('到时间了');
+        advertisement.setAdImage('http://img.hb.aicdn.com/3d06b24a7e6d3f4b1494de25215c62acfef413762fea4-OBBmHL_sq320');
+    });
+
+    var btnSkip = document.querySelector('.btn-skip');
+    btnSkip.addEventListener('click', function (e) {
+        console.log('点击跳过');
+        e.stopPropagation();    // 阻止冒泡
+        advertisement.stopCountDown();  // 停止计时
+    });
+
+    content.addEventListener('click', function () {
+        console.log('点击图片');
+        advertisement.stopCountDown();  // 停止计时
+    });
+</script>
+</body>
+</html>
